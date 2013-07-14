@@ -1,0 +1,1 @@
+var WebChat = angular.module('WebChat', []);

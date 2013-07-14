@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+%html(ng-app="WebChat" ng-controller="AppController")
+	%head
+		%meta(charset="utf-8")
+		%title(ng-bind="title")
+		%meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+		%meta(name="description" content="WebChat is built with AngularJS - it use HTML5 WebSockets for communication and Node.js as backend")
+		%link(rel="stylesheet" href="styles/main.css")
+	%body
+		%header#header
+			%hgroup
+				%h1 Web Chat
+				%h2(ng-bind-template="שלום {{user.nick}}!")
+
+		%section#chat
+			%aside#chat_users(ng-include src="templates.userList" ng-controller="UserListController")
+
+			%article#chat_messages(ng-switch on="user.loggedIn" ng-controller="ChatController" scroll-to-bottom)
+				%ng-include(ng-switch-when="false" src="templates.loginMessage")
+				%ng-include(ng-switch-when="true" src="templates.chatMessages")
+
+			%ng-switch(on="user.loggedIn")
+				%ng-include(ng-switch-when="false" src="templates.loginForm")
+				%ng-include(ng-switch-when="true" src="templates.messageForm")
+
+		%footer#footer WebChat &copy; 2013
+
+		/ AngularJS
+		%script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js")
+		%script window.angular || document.write('<script src="scripts/dependencies/angular.js"><\/script>')
+		/ /AngularJS
+
+		/ Application
+		/ build:js scripts/WebChat.min.js
+		%script(src="scripts/main.js")
+		%script(src="scripts/angular/controllers/app.controller.js")
+		%script(src="scripts/angular/controllers/chat.controller.js")
+		%script(src="scripts/angular/controllers/userlist.controller.js")
+		%script(src="scripts/angular/controllers/login.form.controller.js")
+		%script(src="scripts/angular/controllers/message.form.controller.js")
+		%script(src="scripts/angular/services/chat.service.js")
+		%script(src="scripts/angular/services/userlist.service.js")
+		%script(src="scripts/angular/services/server.service.js")
+		%script(src="scripts/angular/services/beeper.service.js")
+		%script(src="scripts/angular/services/counter.service.js")
+		%script(src="scripts/angular/directives/scroll-to-bottom.directive.js")
+		/ endbuild
+		/ /Application

@@ -1,0 +1,162 @@
+@import "font-awesome.scss";
+
+body {
+	direction: rtl;
+	font-size: 16px;
+	font-family: Arial, Tahoma;
+	color: #000000;
+	margin: 0px;
+	background-color: #d3d3d3;
+}
+
+h1, h2, p, ul, li {
+	margin: 0px;
+	padding: 0px;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+a {
+	color: #353535;
+}
+
+#header {
+
+	background-color: #e6e6e6;
+	text-align: center;
+	padding: 15px 0px 15px;
+
+	 h1 {
+		font-size: 2em;
+		color: #4444cc;
+		font-weight: bold;
+		letter-spacing: 2px;
+		margin-bottom: 5px;
+	}
+
+	 h2 {
+		font-size: 1.3em;
+		color: #3366ff;
+	}
+}
+
+#chat {
+	width: 872px;
+	min-height: 450px;
+	margin: 20px auto 0px;
+	padding: 10px;
+	background-color: #dddddd;
+	border: 1px solid #bebebe;
+}
+
+#chat_users {
+
+	width: 140px;
+	height: 436px;
+	padding: 10px;
+	display: inline-block;
+	float: right;
+	margin-left: 10px;
+	background-color: #ffffff;
+	border: 1px solid #bebebe;
+	position: relative;
+
+	ul {
+		list-style-type: none;
+	}
+
+	li {
+		margin-bottom: 3px;
+		cursor: pointer;
+		font-weight: bold;
+	}
+}
+
+.beeper {
+	cursor: pointer;
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+
+#chat_messages {
+
+	width: 678px;
+	height: 395px;
+	padding: 10px;
+	display: inline-block;
+	background-color: #ffffff;
+	border: 1px solid #bbbbbb;
+	overflow: scroll;
+	word-wrap: break-word;
+	color: #202020;
+
+	#login_message {
+		color: #888888;
+		margin-top: 150px;
+		text-align: center;
+		font-size: 1.5em;
+	}
+
+	ul {
+		list-style-type: none;
+	}
+
+	li {
+		margin-bottom: 8px;
+	}
+
+	address {
+		display: inline-block;
+		margin-left: 5px;
+		margin-bottom: 0px;
+		font-weight: bold;
+	}
+
+	time {
+		display: inline-block;
+	}
+
+	.text img {
+		vertical-align: middle;
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.chat_form {
+
+	margin-top: 5px;
+
+	input[type="text"] {
+		width: 550px;
+		height: 30px;
+		margin: 0px;
+		padding: 0px 10px;
+		border: 1px solid #bbbbbb;
+		font-size: 0.8em;
+		font-family: Tahoma;
+		color: #666666;
+	}
+
+	input[type="submit"] {
+		width: 123px;
+		height: 30px;
+		margin: 0px;
+		padding: 0px 10px;
+		border: 1px solid #bbbbbb;
+		background-color: #eeeeee;
+		cursor: pointer;
+	}
+
+	input[type="submit"]:hover {
+		background-color: #f3f3f3;
+	}
+}
+
+#footer {
+	text-align: center;
+	margin: 10px;
+	font-size: 0.8em;
+	color: #444444;
+}
