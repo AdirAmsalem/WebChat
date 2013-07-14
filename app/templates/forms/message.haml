@@ -1,3 +1,3 @@
-%form.chat_form(method="post" action="#" ng-submit="send()" onsubmit="return false" ng-controller="MessageFormController")
+%form.chat_form(ng-submit="send()" ng-controller="MessageFormController")
 	%input(type="text" autofocus="autofocus" ng-model="message" name="message" autocomplete="off" placeholder="אנא הזן את ההודעה שברצונך לשלוח")
 	%input(type="submit" name="submit" value="שלח")

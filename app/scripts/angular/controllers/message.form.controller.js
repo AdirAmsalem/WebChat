@@ -7,6 +7,8 @@ WebChat.controller('MessageFormController', ['$scope', 'server', function($scope
 			server.send($scope.message);
 			$scope.message = '';
 		}
+
+		return false;
 	};
 
 }]);

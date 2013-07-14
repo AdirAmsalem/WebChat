@@ -5,13 +5,13 @@ body {
 	font-size: 16px;
 	font-family: Arial, Tahoma;
 	color: #000000;
-	margin: 0px;
+	margin: 0;
 	background-color: #d3d3d3;
 }
 
 h1, h2, p, ul, li {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	font-size: 1em;
 	font-weight: normal;
 }
@@ -24,7 +24,7 @@ a {
 
 	background-color: #e6e6e6;
 	text-align: center;
-	padding: 15px 0px 15px;
+	padding: 15px 0 15px;
 
 	 h1 {
 		font-size: 2em;
@@ -43,7 +43,7 @@ a {
 #chat {
 	width: 872px;
 	min-height: 450px;
-	margin: 20px auto 0px;
+	margin: 20px auto 0;
 	padding: 10px;
 	background-color: #dddddd;
 	border: 1px solid #bebebe;
@@ -109,7 +109,7 @@ a {
 	address {
 		display: inline-block;
 		margin-left: 5px;
-		margin-bottom: 0px;
+		margin-bottom: 0;
 		font-weight: bold;
 	}
 
@@ -131,8 +131,8 @@ a {
 	input[type="text"] {
 		width: 550px;
 		height: 30px;
-		margin: 0px;
-		padding: 0px 10px;
+		margin: 0;
+		padding: 0 10px;
 		border: 1px solid #bbbbbb;
 		font-size: 0.8em;
 		font-family: Tahoma;
@@ -142,8 +142,8 @@ a {
 	input[type="submit"] {
 		width: 123px;
 		height: 30px;
-		margin: 0px;
-		padding: 0px 10px;
+		margin: 0;
+		padding: 0 10px;
 		border: 1px solid #bbbbbb;
 		background-color: #eeeeee;
 		cursor: pointer;

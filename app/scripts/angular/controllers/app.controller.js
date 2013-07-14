@@ -1,4 +1,4 @@
-WebChat.controller('AppController',	['$rootScope', '$scope', '$window', 'server', 'beeper', 'counter',	function($rootScope, $scope, $window, server, beeper, counter) {
+WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server', 'beeper', 'counter', function($rootScope, $scope, $window, server, beeper, counter) {
 
 	var title = 'Web Chat';
 
@@ -52,15 +52,15 @@ WebChat.controller('AppController',	['$rootScope', '$scope', '$window', 'server'
 	};
 
 	$scope.beeperActive = beeper.isActive;
-	$scope.beeperTooltip = beeper.isActive() ? 'Disable sound' : 'Enable sound';
+	$scope.beeperTooltip = beeper.isActive() ? 'השתק קול' : 'הפעל קל';
 
 	$scope.toggleBeeper = function() {
 		if (beeper.isActive()) {
 			beeper.disable();
-			$scope.beeperTooltip = 'Enable sound';
+			$scope.beeperTooltip = 'הפעל קול';
 		} else {
 			beeper.enable();
-			$scope.beeperTooltip = 'Disable sound';
+			$scope.beeperTooltip = 'השתק קול';
 		}
 	};
 

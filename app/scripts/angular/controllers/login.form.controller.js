@@ -7,6 +7,8 @@ WebChat.controller('LoginFormController', ['$rootScope', '$scope', 'server', fun
 			server.send($scope.nick);
 			$rootScope.$broadcast('app:login', $scope.nick);
 		}
+
+		return false;
 	};
 
 }]);
