@@ -1,1 +1,1 @@
-var WebChat = angular.module('WebChat', []);
+var WebChat = angular.module('WebChat', ['Localization']);

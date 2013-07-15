@@ -1,6 +1,4 @@
-WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server', 'beeper', 'counter', function($rootScope, $scope, $window, server, beeper, counter) {
-
-	var title = 'Web Chat';
+WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server', 'beeper', 'counter', 'localization', 'i18nFilter', function($rootScope, $scope, $window, server, beeper, counter, localization, i18nFilter) {
 
 	function serverConnected() {
 		console.log('WebChat is ready!');
@@ -22,7 +20,7 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 	}
 
 	function displayCounter() {
-		$scope.title = title + ' (' + counter.getValue() + ')';
+		$scope.title = $scope.appName + ' (' + counter.getValue() + ')';
 	}
 
 	function enableCounter() {
@@ -31,14 +29,20 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 
 	function disableCounter() {
 		counter.disable();
-		$scope.title = title;
+		$scope.title = $scope.appName;
 	}
 
-	$scope.title = title;
+	localization.getData().then( function(data) {
+		$scope.i18n = data;
+		// $scope.user.nick = $scope.user.nick || i18nFilter('guest');
+	});
+
+	$scope.appName = 'Web Chat';
+	$scope.title = $scope.appName;
 
 	// Default user information
 	$scope.user = {
-		nick: 'אורח',
+		nick: '',
 		newNick: '',
 		loggedIn: false
 	};
@@ -52,15 +56,15 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 	};
 
 	$scope.beeperActive = beeper.isActive;
-	$scope.beeperTooltip = beeper.isActive() ? 'השתק קול' : 'הפעל קל';
+	$scope.beeperTooltip = beeper.isActive() ? 'disable_sound' : 'enable_sound';
 
 	$scope.toggleBeeper = function() {
 		if (beeper.isActive()) {
 			beeper.disable();
-			$scope.beeperTooltip = 'הפעל קול';
+			$scope.beeperTooltip = 'enable_sound';
 		} else {
 			beeper.enable();
-			$scope.beeperTooltip = 'השתק קול';
+			$scope.beeperTooltip = 'disable_sound';
 		}
 	};
 
@@ -73,7 +77,7 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 	});
 
 	$rootScope.$on('app:nickError', function(e) {
-		window.alert('הכינוי שבחרת נמצא בשימוש, אנא בחר כינוי אחר.');
+		$window.alert(i18nFilter('nick_is_already_in_use'));
 	});
 
 	$rootScope.$on('app:loggedIn', function(e) {

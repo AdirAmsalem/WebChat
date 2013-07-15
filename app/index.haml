@@ -6,11 +6,11 @@
 		%meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
 		%meta(name="description" content="WebChat is built with AngularJS - it use HTML5 WebSockets for communication and Node.js as backend")
 		%link(rel="stylesheet" href="styles/main.css")
-	%body
+	%body(ng-class="{'ltr': i18n && i18n.meta && i18n.meta.dir == 'ltr'}")
 		%header#header
 			%hgroup
-				%h1 Web Chat
-				%h2(ng-bind-template="שלום {{user.nick}}!")
+				%h1(ng-bind="appName")
+				%h2(ng-bind-template="{{'hello' | i18n}} {{user.nick || ('guest' | i18n)}}!")
 
 		%section#chat
 			%aside#chat_users(ng-include src="templates.userList" ng-controller="UserListController")
@@ -43,6 +43,7 @@
 		%script(src="scripts/angular/services/server.service.js")
 		%script(src="scripts/angular/services/beeper.service.js")
 		%script(src="scripts/angular/services/counter.service.js")
+		%script(src="scripts/angular/filters/i18n.filter.js")
 		%script(src="scripts/angular/directives/scroll-to-bottom.directive.js")
 		/ endbuild
 		/ /Application

@@ -1,0 +1,18 @@
+{
+	"meta": {
+		"language": "en",
+		"dir":  "ltr"
+	},
+	"keys": {
+		"hello": "Hello",
+		"guest": "Guest",
+		"please_enter_nick": "Please enter a nickname (Maximum 15 characters)",
+		"login": "Login",
+		"please_enter_message": "Please enter your message",
+		"send": "Send",
+		"login_to_view_chat": "Only logged-in users can view the chat",
+		"enable_sound": "Enable sound",
+		"disable_sound": "Disable sound",
+		"nick_is_already_in_use": "This nickname is already in use, please choose a different nickname"
+	}
+}

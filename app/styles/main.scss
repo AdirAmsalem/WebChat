@@ -21,10 +21,9 @@ a {
 }
 
 #header {
-
 	background-color: #e6e6e6;
 	text-align: center;
-	padding: 15px 0 15px;
+	padding: 15px 0;
 
 	 h1 {
 		font-size: 2em;
@@ -50,7 +49,6 @@ a {
 }
 
 #chat_users {
-
 	width: 140px;
 	height: 436px;
 	padding: 10px;
@@ -80,7 +78,6 @@ a {
 }
 
 #chat_messages {
-
 	width: 678px;
 	height: 395px;
 	padding: 10px;
@@ -106,14 +103,14 @@ a {
 		margin-bottom: 8px;
 	}
 
-	address {
+	.author {
 		display: inline-block;
 		margin-left: 5px;
 		margin-bottom: 0;
 		font-weight: bold;
 	}
 
-	time {
+	.pubdate {
 		display: inline-block;
 	}
 
@@ -125,7 +122,6 @@ a {
 }
 
 .chat_form {
-
 	margin-top: 5px;
 
 	input[type="text"] {
@@ -140,7 +136,7 @@ a {
 	}
 
 	input[type="submit"] {
-		width: 123px;
+		width: 124px;
 		height: 30px;
 		margin: 0;
 		padding: 0 10px;
@@ -159,4 +155,24 @@ a {
 	margin: 10px;
 	font-size: 0.8em;
 	color: #444444;
+}
+
+body.ltr {
+	direction: ltr;
+
+	#chat_users {
+		float: left;
+		margin-left: 0;
+		margin-right: 10px;
+	}
+
+	#chat_messages address {
+		margin-left: 0;
+		margin-right: 5px;
+	}
+
+	.beeper {
+		left: auto;
+		right: 5px;
+	}	
 }
