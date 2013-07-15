@@ -5,7 +5,6 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		language = navigator.language || navigator.userLanguage;
 
 	function getLanguage() {
-		return 'he';
 		for (var key in supportedLanguages) {
 			if (supportedLanguages[key] === language) {
 				return language;
