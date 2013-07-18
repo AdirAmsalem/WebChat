@@ -23,7 +23,7 @@
 				%ng-include(ng-switch-when="false" src="templates.loginForm")
 				%ng-include(ng-switch-when="true" src="templates.messageForm")
 
-		%footer#footer WebChat &copy; 2013
+		%footer#footer(ng-bind-template="{{appName}} &copy 2013")
 
 		/ AngularJS
 		%script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js")

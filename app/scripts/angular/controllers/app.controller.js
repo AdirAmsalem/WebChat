@@ -34,7 +34,6 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 
 	localization.getData().then( function(data) {
 		$scope.i18n = data;
-		// $scope.user.nick = $scope.user.nick || i18nFilter('guest');
 	});
 
 	$scope.appName = 'Web Chat';

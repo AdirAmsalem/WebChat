@@ -147,6 +147,7 @@ module.exports = function(grunt) {
 							'index.html',
 							'images/**',
 							'styles/font/**',
+							'scripts/lang/**',
 							'scripts/dependencies/**'
 						],
 						dest: '<%= folders.dist %>'
