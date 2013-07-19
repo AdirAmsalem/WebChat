@@ -124,19 +124,20 @@ a {
 
 	.author {
 		display: inline-block;
-		margin-left: 5px;
-		margin-bottom: 0;
 		font-weight: bold;
 	}
 
 	.pubdate {
 		display: inline-block;
-	}
+		font-size: 0.8em;
 
-	.text img {
-		vertical-align: middle;
-		width: 16px;
-		height: 16px;
+		&:before {
+			content: '(';
+		}
+
+		&:after {
+			content: '):';
+		}
 	}
 }
 
@@ -183,11 +184,6 @@ body.ltr {
 		float: left;
 		margin-left: 0;
 		margin-right: 10px;
-	}
-
-	#chat_messages .author {
-		margin-left: 0;
-		margin-right: 5px;
 	}
 
 	.beeper {

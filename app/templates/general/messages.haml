@@ -1,7 +1,5 @@
 %ul
 	%li(ng-repeat="message in messages")
 		%address.author(style="color: {{message.color}}" ng-bind="message.nickname")
-		(
 		%time.pubdate(pubdate ng-bind="message.time")
-		) :
 		.text(ng-bind-html-unsafe="message.text")
