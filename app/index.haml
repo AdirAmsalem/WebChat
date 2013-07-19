@@ -23,7 +23,10 @@
 				%ng-include(ng-switch-when="false" src="templates.loginForm")
 				%ng-include(ng-switch-when="true" src="templates.messageForm")
 
-		%footer#footer(ng-bind-template="{{appName}} &copy 2013")
+		%footer#footer
+			%div(ng-bind-template="{{appName}} &copy 2013")
+			%select(ng-model="language" ng-change="setLanguage('name', language)" ng-options="lang.name as lang.name for lang in languages")
+
 
 		/ AngularJS
 		%script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js")

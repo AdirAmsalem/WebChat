@@ -1,8 +1,8 @@
-angular.module('Localization', []).factory('localization', ['$rootScope', '$http', '$q', '$timeout', function($rootScope, $http, $q, $timeout) {
+angular.module('Localization', []).factory('localization', ['$rootScope', '$http', '$q', function($rootScope, $http, $q) {
 
 	var LANG_DIRECTORY = 'scripts/lang',
 		langData,
-		language = (navigator.language || navigator.userLanguage).toLowerCase(),
+		language,
 		supportedLanguages = [
 			{
 				name: 'English',
@@ -37,10 +37,12 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 	}
 
 	function getLanguage() {
-		for (var i = 0, langObject; !!(langObject = supportedLanguages[i]); i++) {
-			for (var j = 0, lang; !!(lang = langObject.languages[j]); j++) {
-				if (lang === language) {
-					return langObject;
+		if (language) {
+			for (var i = 0, langObject; !!(langObject = supportedLanguages[i]); i++) {
+				for (var j = 0, lang; !!(lang = langObject.languages[j]); j++) {
+					if (lang === language) {
+						return langObject;
+					}
 				}
 			}
 		}
@@ -48,10 +50,24 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		return supportedLanguages[0];
 	}
 
-	function setLanguage(lang) {
-		if (lang && angular.isString(lang)) {
-			language = lang;
+	function setLanguageByCode(langCode) {
+		if (langCode && angular.isString(langCode)) {
+			language = langCode.toLowerCase();
 		}
+
+		return getLocalization();
+	}
+
+	function setLanguageByName(langName) {
+		if (langName && angular.isString(langName)) {
+			for (var i = 0, lang; !!(lang = supportedLanguages[i]); i++) {
+				if (lang.name === langName) {
+					language = lang.languages[0];
+				}
+			}
+		}
+
+		return getLocalization();
 	}
 
 	function getKey(key) {
@@ -60,23 +76,6 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		}
 
 		return '';
-	}
-
-	function getData() {
-		var deferred = $q.defer();
-
-		function getLangData() {
-			if (langData) {
-				deferred.resolve(langData);
-				return true;
-			}
-
-			$timeout(getLangData, 200);
-		}
-
-		getLangData();
-
-		return deferred.promise;
 	}
 
 	function getLocalization() {
@@ -96,15 +95,13 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		return deferred.promise;
 	}
 
-	getLocalization().then(null, function() {
-		console.error('Can\'t load localization file.');
-	});
-
 	// Publish API
 	return {
 		getLanguageList: getLanguageList,
-		getKey: getKey,
-		getData: getData,
+		setLanguageByCode: setLanguageByCode,
+		setLanguageByName: setLanguageByName,
+		getLanguage: getLanguage,
+		getKey: getKey
 	};
 
 }])

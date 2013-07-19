@@ -1,5 +1,7 @@
 WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server', 'beeper', 'counter', 'localization', 'i18nFilter', function($rootScope, $scope, $window, server, beeper, counter, localization, i18nFilter) {
 
+	var langCode = (navigator.language || navigator.userLanguage).toLowerCase();
+
 	function serverConnected() {
 		console.log('WebChat is ready!');
 	}
@@ -32,10 +34,6 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 		$scope.title = $scope.appName;
 	}
 
-	localization.getData().then( function(data) {
-		$scope.i18n = data;
-	});
-
 	$scope.appName = 'Web Chat';
 	$scope.title = $scope.appName;
 
@@ -53,6 +51,24 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 		loginForm:		'templates/forms/login.html',
 		messageForm:	'templates/forms/message.html'
 	};
+
+	$scope.setLanguage = function(methodCode, lang) {
+		var method;
+
+		if (methodCode === 'name') {
+			method = 'setLanguageByName';
+		} else {
+			method = 'setLanguageByCode';
+		}
+
+		localization[method](lang).then( function(data) {
+			$scope.i18n = data;
+		});
+	};
+
+	$scope.setLanguage('code', langCode);
+	$scope.language = localization.getLanguage().name;
+	$scope.languages = localization.getLanguageList();
 
 	$scope.beeperActive = beeper.isActive;
 	$scope.beeperTooltip = beeper.isActive() ? 'disable_sound' : 'enable_sound';
