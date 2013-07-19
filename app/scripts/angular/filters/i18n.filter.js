@@ -10,7 +10,7 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 				file: 'en.json'
 			},
 			{
-				name: 'Hebrew',
+				name: 'עברית',
 				languages: ['he', 'he-il'],
 				file: 'he.json'
 			}

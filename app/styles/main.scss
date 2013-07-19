@@ -20,6 +20,25 @@ a {
 	color: #353535;
 }
 
+.smiley {
+	background: url('../images/smileys.png') no-repeat top left;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top: 3px;
+}
+
+.smiley.bigsmile { background-position: 0px 0px; }
+.smiley.blink { background-position: 0px -21px; }
+.smiley.confused { background-position: 0px -42px; }
+.smiley.depressed { background-position: 0px -63px; }
+.smiley.sad { background-position: 0px -84px; }
+.smiley.love { background-position: 0px -105px; }
+.smiley.smile { background-position: 0px -126px; }
+.smiley.tongue { background-position: 0px -147px; }
+.smiley.surprised { background-position: 0px -168px; }
+
 #header {
 	background-color: #e6e6e6;
 	text-align: center;

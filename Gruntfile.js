@@ -145,7 +145,7 @@ module.exports = function(grunt) {
 						src: [
 							'beep.wav',
 							'index.html',
-							'images/**',
+							'images/smileys.png',
 							'styles/font/**',
 							'scripts/lang/**',
 							'scripts/dependencies/**'

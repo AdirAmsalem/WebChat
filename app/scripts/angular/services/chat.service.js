@@ -53,7 +53,7 @@ WebChat.factory('chat', function() {
 			':D': 'bigsmile'
 		};
 
-		return '<img src="images/smileys/' + icons[icon] + '.jpg" alt="' +  icon + '" title="' +  icon + '">';
+		return '<i class="smiley ' + icons[icon] + '" title="' +  icon + '"></i>';
 	}
 
 	function addIcons(message) {
@@ -68,7 +68,7 @@ WebChat.factory('chat', function() {
 			.replace(':O', getIcon(':O'))
 			.replace('O:', getIcon(':P'))
 			.replace('<3', getIcon('<3'))
-			.replace('3>', getIcon('3>'))
+			.replace('3>', getIcon('<3'))
 			.replace(':/', getIcon(':/'))
 			.replace(':\\', getIcon(':/'))
 			.replace('/:', getIcon(':/'))
