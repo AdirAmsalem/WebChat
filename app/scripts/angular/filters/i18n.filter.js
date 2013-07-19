@@ -80,7 +80,7 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 	}
 
 	function getLocalization() {
-		var	deferred = $q.defer(),
+		var deferred = $q.defer(),
 			seperator = LANG_DIRECTORY[LANG_DIRECTORY.length-1] !== '/' ? '/' : '',
 			file = getLanguage().file;
 

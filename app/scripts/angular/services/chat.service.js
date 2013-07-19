@@ -7,8 +7,8 @@ WebChat.factory('chat', function() {
 	}
 
 	function buildChat(messages) {
-		for (var i = 0, length = messages.length; i < length; i++) {
-			addMessage(messages[i]);
+		for (var i = 0, message; !!(message = messages[i]); i++) {
+			addMessage(message);
 		}
 	}
 
