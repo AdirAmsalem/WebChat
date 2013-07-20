@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 %html(ng-app="WebChat" ng-controller="AppController")
+
 	%head
 		%meta(charset="utf-8")
 		%title(ng-bind="title")
 		%meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
 		%meta(name="description" content="WebChat is built with AngularJS - it use HTML5 WebSockets for communication and Node.js as backend")
 		%link(rel="stylesheet" href="styles/main.css")
+
 	%body(ng-class="{'ltr': i18n && i18n.meta && i18n.meta.dir == 'ltr'}")
+
 		%header#header
 			%hgroup
 				%h1(ng-bind="appName")
@@ -25,7 +28,9 @@
 
 		%footer#footer
 			%div(ng-bind-template="{{appName}} &copy 2013")
-			%select(ng-model="language" ng-change="setLanguage('name', language)" ng-options="lang.name as lang.name for lang in languages")
+			%div.flags
+				%a(href="" title="{{lang.name}}" alt="{{lang.name}}" ng-repeat="lang in languages" ng-click="setLanguage('name', lang.name)")
+					%i(class="flag {{lang.icon}}")
 
 
 		/ AngularJS

@@ -6,11 +6,13 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		supportedLanguages = [
 			{
 				name: 'English',
+				icon: 'usa',
 				languages: ['en', 'en-us'],
 				file: 'en.json'
 			},
 			{
 				name: 'עברית',
+				icon: 'israel',
 				languages: ['he', 'he-il'],
 				file: 'he.json'
 			}
@@ -27,7 +29,7 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		for (var i = 0, lang; !!(lang = supportedLanguages[i]); i++) {
 			list.push({
 				name: lang.name,
-				value: lang.languages[0]
+				icon: lang.icon
 			});
 		}
 

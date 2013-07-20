@@ -63,11 +63,11 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 
 		localization[method](lang).then( function(data) {
 			$scope.i18n = data;
+			$scope.language = localization.getLanguage().name;
 		});
 	};
 
 	$scope.setLanguage('code', langCode);
-	$scope.language = localization.getLanguage().name;
 	$scope.languages = localization.getLanguageList();
 
 	$scope.beeperActive = beeper.isActive;

@@ -39,6 +39,18 @@ a {
 .smiley.tongue { background-position: 0px -147px; }
 .smiley.surprised { background-position: 0px -168px; }
 
+.flag {
+	background: url('../images/flags.png') no-repeat top left;
+	display: inline-block;
+	width: 16px;
+	height: 11px;
+	margin: 0 2px;
+}
+
+.flag.usa { background-position: 0px 0px; }
+.flag.israel { background-position: 0px -13px; }
+
+
 #header {
 	background-color: #e6e6e6;
 	text-align: center;
@@ -175,6 +187,15 @@ a {
 	margin: 10px;
 	font-size: 0.8em;
 	color: #444444;
+
+	.flags {
+		direction: ltr;
+		margin-top: 3px;
+
+		a {
+			text-decoration: none;
+		}
+	}
 }
 
 body.ltr {
