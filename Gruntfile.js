@@ -190,7 +190,7 @@ module.exports = function(grunt) {
 			dist: {
 				auth: {
 					host: 'chat.adircdn.com',
-					port: '2121',
+					port: '**',
 					authKey: 'deploy'
 				},
 				src: '<%= folders.dist %>',
