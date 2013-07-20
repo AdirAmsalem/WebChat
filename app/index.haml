@@ -28,10 +28,9 @@
 
 		%footer#footer
 			%div(ng-bind-template="{{appName}} &copy 2013")
-			%div.flags
+			.flags
 				%a(href="" title="{{lang.name}}" alt="{{lang.name}}" ng-repeat="lang in languages" ng-click="setLanguage('name', lang.name)")
 					%i(class="flag {{lang.icon}}")
-
 
 		/ AngularJS
 		%script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js")

@@ -145,7 +145,7 @@ module.exports = function(grunt) {
 						src: [
 							'beep.wav',
 							'index.html',
-							'images/*.png',
+							'images/*',
 							'styles/font/**',
 							'scripts/lang/**',
 							'scripts/dependencies/**'
@@ -190,7 +190,7 @@ module.exports = function(grunt) {
 			dist: {
 				auth: {
 					host: 'chat.adircdn.com',
-					port: '**',
+					port: '2121',
 					authKey: 'deploy'
 				},
 				src: '<%= folders.dist %>',
