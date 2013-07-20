@@ -1,6 +1,6 @@
 WebChat.factory('server', ['$rootScope', function($rootScope) {
 
-	var socket = {};
+	var socket;
 
 	function connect() {
 		var options;
@@ -19,7 +19,9 @@ WebChat.factory('server', ['$rootScope', function($rootScope) {
 	}
 
 	function send(message) {
-		socket.send(message);
+		if (socket) {
+			socket.send(message);
+		}
 	}
 
 	function onOpen() {
