@@ -1,4 +1,4 @@
 %ul
 	%li(ng-repeat="user in userlist" style="color: {{user.color}}" ng-bind="user.nickname")
 
-%i.icon-volume-off.beeper(ng-show="user.loggedIn" rel="tooltip" alt="{{beeperTooltip | i18n}}" title="{{beeperTooltip | i18n}}" ng-class="{'icon-volume-up': beeperActive()}" ng-click="toggleBeeper()")
+%i.beeper(ng-show="user.loggedIn" rel="tooltip" alt="{{beeperTooltip | i18n}}" title="{{beeperTooltip | i18n}}" ng-class="{'icon-volume-up': beeperActive(), 'icon-volume-off': !beeperActive()}" ng-click="toggleBeeper()")

@@ -13,6 +13,8 @@
 		"login_to_view_chat": "יש להתחבר על מנת לצפות בצאט",
 		"enable_sound": "הפעל קול",
 		"disable_sound": "השתק קול",
-		"nick_is_already_in_use": "הכינוי שבחרת נמצא בשימוש, אנא בחר כינוי אחר"
+		"nick_is_already_in_use": "הכינוי שבחרת נמצא בשימוש, אנא בחר כינוי אחר",
+		"enable_speech_recognition": "הפעל זיהוי קול",
+		"disable_speech_recognition": "כבה זיהוי קול"
 	}
 }

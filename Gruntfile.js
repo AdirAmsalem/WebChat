@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 				'immed': true,
 			//	'indent': 4,
 				'latedef': true,
-				'newcap': true,
+			//	'newcap': true,
 				'noarg': true,
 				'quotmark': 'single',
 				'regexp': true,

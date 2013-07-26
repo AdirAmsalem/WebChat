@@ -1,3 +1,6 @@
 %form.chat_form(ng-submit="send()" ng-controller="MessageFormController")
-	%input(type="text" autofocus="autofocus" ng-model="message" name="message" autocomplete="off" placeholder="{{'please_enter_message' | i18n}}")
+	.input-container
+		%input(type="text" autofocus="autofocus" ng-model="message" name="message" autocomplete="off" placeholder="{{'please_enter_message' | i18n}}")
+		%a.push-to-talk(href="" ng-show="speech.isSupported()" rel="tooltip" alt="{{speechToolTip | i18n}}" title="{{speechTooltip | i18n}}"  ng-click="toggleSpeech()")
+			%i.icon-microphone(ng-class="{'icon-spin': speech.isActive()}")
 	%input(type="submit" name="submit" value="{{'send' | i18n}}")

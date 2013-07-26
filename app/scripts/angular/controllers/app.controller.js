@@ -1,4 +1,4 @@
-WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server', 'beeper', 'counter', 'localization', 'i18nFilter', function($rootScope, $scope, $window, server, beeper, counter, localization, i18nFilter) {
+WebChat.controller('AppController', ['$rootScope', '$scope', 'server', 'beeper', 'counter', 'localization', 'i18nFilter', function($rootScope, $scope, server, beeper, counter, localization, i18nFilter) {
 
 	var langCode = (navigator.language || navigator.userLanguage).toLowerCase();
 
@@ -17,8 +17,8 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 	}
 
 	function bindCounter() {
-		$window.addEventListener('focus', disableCounter);
-		$window.addEventListener('blur', enableCounter);
+		window.addEventListener('focus', disableCounter);
+		window.addEventListener('blur', enableCounter);
 	}
 
 	function displayCounter() {
@@ -83,21 +83,17 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 		}
 	};
 
-	$rootScope.$on('server:connected', function() {
-		serverConnected();
-	});
+	$rootScope.$on('server:connected', serverConnected);
 
 	$rootScope.$on('app:login', function(e, nick) {
 		updateUserNick(nick);
 	});
 
 	$rootScope.$on('app:nickError', function(e) {
-		$window.alert(i18nFilter('nick_is_already_in_use'));
+		window.alert(i18nFilter('nick_is_already_in_use'));
 	});
 
-	$rootScope.$on('app:loggedIn', function(e) {
-		loggedIn();
-	});
+	$rootScope.$on('app:loggedIn', loggedIn);
 
 	$rootScope.$on('chat:message', function(e) {
 		beeper.beep();
@@ -108,7 +104,7 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 		}
 	});
 
-}]).run( ['server', function(server) {
+}]).run( ['server', 'speechRecognition', function(server, speechRecognition) {
 
 	if ('WebSocket' in window) {
 		console.log('Preparing WebChat..');
@@ -116,6 +112,10 @@ WebChat.controller('AppController', ['$rootScope', '$scope', '$window', 'server'
 	} else {
 		console.error('We are sorry, you cannot use WebChat.');
 		return false;
+	}
+
+	if ('webkitSpeechRecognition' in window) {
+		speechRecognition.init();
 	}
 
 }]);

@@ -27,9 +27,8 @@ WebChat.factory('server', ['$rootScope', function($rootScope) {
 	function onOpen() {
 		console.log('[2/2] Connected to the server.');
 
-		$rootScope.$apply( function() {
-			$rootScope.$broadcast('server:connected');
-		});
+		$rootScope.$broadcast('server:connected');
+		$rootScope.$apply();
 	}
 
 	function onMessage(response) {
@@ -38,29 +37,29 @@ WebChat.factory('server', ['$rootScope', function($rootScope) {
 		response = JSON.parse(response.data);
 		data = response.data;
 
-		$rootScope.$apply( function() {
-			switch (response.type) {
-				case 'message':
-					$rootScope.$broadcast('chat:message', data);
-					break;
-				case 'history':
-					$rootScope.$broadcast('app:loggedIn', data);
-					$rootScope.$broadcast('chat:history', data);
-					break;
-				case 'nick_error':
-					$rootScope.$broadcast('app:nickError');
-					break;
-				case 'new_user':
-					$rootScope.$broadcast('userlist:add', data);
-					break;
-				case 'user_list':
-					$rootScope.$broadcast('userlist:current', data);
-					break;
-				case 'remove_user':
-					$rootScope.$broadcast('userlist:remove', data);
-					break;
-			}
-		});
+		switch (response.type) {
+			case 'message':
+				$rootScope.$broadcast('chat:message', data);
+				break;
+			case 'history':
+				$rootScope.$broadcast('app:loggedIn', data);
+				$rootScope.$broadcast('chat:history', data);
+				break;
+			case 'nick_error':
+				$rootScope.$broadcast('app:nickError');
+				break;
+			case 'new_user':
+				$rootScope.$broadcast('userlist:add', data);
+				break;
+			case 'user_list':
+				$rootScope.$broadcast('userlist:current', data);
+				break;
+			case 'remove_user':
+				$rootScope.$broadcast('userlist:remove', data);
+				break;
+		}
+
+		$rootScope.$apply();
 	}
 
 	function onError(error) {

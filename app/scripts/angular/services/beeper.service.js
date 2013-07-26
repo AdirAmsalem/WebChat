@@ -5,7 +5,6 @@ WebChat.factory('beeper', function() {
 
 	sound.load();
 
-
 	function enable() {
 		isOn = true;
 	}

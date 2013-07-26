@@ -8,12 +8,14 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 				name: 'English',
 				icon: 'usa',
 				languages: ['en', 'en-us'],
+				speechCode: 'en-US',
 				file: 'en.json'
 			},
 			{
 				name: 'עברית',
 				icon: 'israel',
 				languages: ['he', 'he-il'],
+				speechCode: 'he-IL',
 				file: 'he.json'
 			}
 		];

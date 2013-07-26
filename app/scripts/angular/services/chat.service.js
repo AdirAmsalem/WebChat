@@ -17,7 +17,7 @@ WebChat.factory('chat', function() {
 			hour,
 			minute,
 			text,
-			newMessage = {};
+			newMessage;
 
 		// Convert timestamp to human-friendly format
 		time = new Date(message.time);
@@ -64,7 +64,7 @@ WebChat.factory('chat', function() {
 			.replace(/:P/gi, getIcon(':P'))
 			.replace(/P:/gi, getIcon(':P'))
 			.replace(/:O/gi, getIcon(':O'))
-			.replace(/O:/gi, getIcon(':P'))
+			.replace(/O:/gi, getIcon(':O'))
 			.replace(/<3/gi, getIcon('<3'))
 			.replace(/3>/gi, getIcon('<3'))
 			.replace(/:\//gi, getIcon(':/'))
