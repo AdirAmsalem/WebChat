@@ -1,4 +1,4 @@
-WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', 'speechRecognition', function($rootScope, $scope, server, speechRecognition) {
+WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', 'localization', 'speechRecognition', function($rootScope, $scope, server, localization, speechRecognition) {
 
 	$scope.message = '';
 	$scope.speech = speechRecognition;
@@ -8,10 +8,12 @@ WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', '
 	}
 
 	$scope.toggleSpeech = function() {
+		var langCode = localization.getLanguage().speechCode;
+
 		if (speechRecognition.isActive()) {
 			speechRecognition.stop();
 		} else {
-			speechRecognition.start();
+			speechRecognition.start(langCode);
 		}
 	};
 

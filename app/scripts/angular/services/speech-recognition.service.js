@@ -1,4 +1,4 @@
-WebChat.factory('speechRecognition', ['$rootScope', 'localization', function($rootScope, localization) {
+WebChat.factory('speechRecognition', ['$rootScope', function($rootScope) {
 
 	var recognition,
 		active = false;
@@ -50,9 +50,8 @@ WebChat.factory('speechRecognition', ['$rootScope', 'localization', function($ro
 		$rootScope.$apply();
 	}
 
-
-	function start() {
-		recognition.lang = localization.getLanguage().speechCode;
+	function start(langCode) {
+		recognition.lang = langCode || 'en-US';
 		recognition.start();
 	}
 
