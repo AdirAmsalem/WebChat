@@ -1,4 +1,4 @@
-%form.chat_form(ng-submit="login()" ng-controller="LoginFormController")
+%form.chat_form(ng-submit="login(nick)" ng-controller="LoginFormController")
 	.input-container
 		%input(type="text" autofocus="autofocus" ng-model="nick" name="nick" required placeholder="{{'please_enter_nick' | i18n}}" maxlength="15")
 	%input(type="submit" name="submit" value="{{'login' | i18n}}")

@@ -17,9 +17,9 @@ WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', '
 		}
 	};
 
-	$scope.send = function() {
-		if ($scope.message.length >= 1) {
-			server.send($scope.message);
+	$scope.send = function(message) {
+		if (message.length >= 1) {
+			server.send(message);
 			$scope.message = '';
 		}
 
