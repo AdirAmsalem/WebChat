@@ -1,5 +1,11 @@
 @import "font-awesome.scss";
 
+@mixin box-sizing($bs) {
+	-webkit-box-sizing: $bs;
+	-moz-box-sizing: $bs;
+	box-sizing: $bs;
+}
+
 body {
 	direction: rtl;
 	font-size: 16px;
@@ -50,13 +56,12 @@ a {
 .flag.usa { background-position: 0px 0px; }
 .flag.israel { background-position: 0px -13px; }
 
-
 #header {
 	background-color: #e6e6e6;
 	text-align: center;
 	padding: 15px 0;
 
-	 h1 {
+	.title {
 		font-size: 2em;
 		color: #4444cc;
 		font-weight: bold;
@@ -64,23 +69,35 @@ a {
 		margin-bottom: 5px;
 	}
 
-	 h2 {
+	.subtitle {
 		font-size: 1.3em;
 		color: #3366ff;
+	}
+
+	.logout {
+		text-decoration: none;
+		font-size: 0.9em;
+		display: block;
+		color: #dd0000;
+		width: 888px;
+		margin: 0 auto;
+		text-align: right;
+		height: 0;
 	}
 }
 
 #chat {
-	width: 872px;
+	width: 894px;
 	min-height: 450px;
 	margin: 20px auto 0;
 	padding: 10px;
 	background-color: #dddddd;
 	border: 1px solid #bebebe;
+	@include box-sizing(border-box);
 }
 
 #chat_users {
-	width: 140px;
+	width: 162px;
 	height: 436px;
 	padding: 10px;
 	display: inline-block;
@@ -89,6 +106,7 @@ a {
 	background-color: #ffffff;
 	border: 1px solid #bebebe;
 	position: relative;
+	@include box-sizing(border-box);
 
 	ul {
 		list-style-type: none;
@@ -109,7 +127,7 @@ a {
 }
 
 #chat_messages {
-	width: 678px;
+	width: 700px;
 	height: 395px;
 	padding: 10px;
 	display: inline-block;
@@ -118,6 +136,7 @@ a {
 	overflow: scroll;
 	word-wrap: break-word;
 	color: #202020;
+	@include box-sizing(border-box);
 
 	#login_message {
 		color: #888888;
@@ -171,7 +190,7 @@ a {
 		font-size: 0.8em;
 		font-family: Tahoma;
 		color: #666666;
-		box-sizing: border-box;
+		@include box-sizing(border-box);
 	}
 
 	.push-to-talk {
@@ -189,7 +208,7 @@ a {
 		border: 1px solid #bbbbbb;
 		background-color: #eeeeee;
 		cursor: pointer;
-		box-sizing: border-box;
+		@include box-sizing(border-box);
 	}
 
 	input[type="submit"]:hover {
@@ -216,6 +235,10 @@ a {
 body.ltr {
 	direction: ltr;
 
+	#header .logout {
+		text-align: left;
+	}
+
 	#chat_users {
 		float: left;
 		margin-left: 0;
@@ -230,5 +253,11 @@ body.ltr {
 	.push-to-talk {
 		left: auto;
 		right: 8px;
+	}
+}
+
+.ie {
+	.input-container {
+		width: 571px;
 	}
 }

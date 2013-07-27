@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-%html(ng-app="WebChat" ng-controller="AppController")
-
+%html(ng-app="WebChat" ng-controller="AppController" ie-class)
 	%head
 		%meta(charset="utf-8")
 		%title(ng-bind="title")
@@ -12,8 +11,12 @@
 
 		%header#header
 			%hgroup
-				%h1(ng-bind="appName")
-				%h2(ng-bind-template="{{'hello' | i18n}} {{user.nick || ('guest' | i18n)}}!")
+				%h1.title(ng-bind="appName")
+				%h2.subtitle(ng-bind-template="{{'hello' | i18n}} {{user.nick || ('guest' | i18n)}}!")
+
+			%a.logout(href="" title="{{'logout' | i18n}}" ng-click="logout()" ng-show="user.loggedIn")
+				%i.icon-off
+				%span(ng-bind="'logout' | i18n")
 
 		%section#chat
 			%aside#chat_users(ng-include src="templates.userList" ng-controller="UserListController")
@@ -29,7 +32,7 @@
 		%footer#footer
 			%div(ng-bind-template="{{appName}} &copy 2013")
 			.flags
-				%a(href="" title="{{lang.name}}" alt="{{lang.name}}" ng-repeat="lang in languages" ng-click="setLanguage('name', lang.name)")
+				%a(href="" title="{{lang.name}}" ng-repeat="lang in languages" ng-click="setLanguage('name', lang.name)")
 					%i(class="flag {{lang.icon}}")
 
 		/ AngularJS
@@ -54,5 +57,6 @@
 		%script(src="scripts/angular/services/speech-recognition.service.js")
 		%script(src="scripts/angular/filters/i18n.filter.js")
 		%script(src="scripts/angular/directives/scroll-to-bottom.directive.js")
+		%script(src="scripts/angular/directives/ie-class.directive.js")
 		/ endbuild
 		/ /Application

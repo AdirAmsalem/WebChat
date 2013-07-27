@@ -2,6 +2,11 @@ WebChat.controller('LoginFormController', ['$rootScope', '$scope', 'server', 'st
 
 	$scope.nick = '';
 
+	function logout() {
+		storage.remove('nick');
+		server.disconnect(true);
+	}
+
 	function checkPreviousLogin() {
 		var nick = storage.get('nick');
 
@@ -21,5 +26,6 @@ WebChat.controller('LoginFormController', ['$rootScope', '$scope', 'server', 'st
 	};
 
 	$rootScope.$on('server:connected', checkPreviousLogin);
+	$rootScope.$on('app:logout', logout);
 
 }]);

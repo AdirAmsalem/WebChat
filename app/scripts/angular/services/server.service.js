@@ -24,6 +24,16 @@ WebChat.factory('server', ['$rootScope', function($rootScope) {
 		}
 	}
 
+	function disconnect(reconnect) {
+		if (socket) {
+			socket.close();
+
+			if (reconnect) {
+				connect();
+			}
+		}
+	}
+
 	function onOpen() {
 		console.log('[2/2] Connected to the server.');
 
@@ -77,7 +87,8 @@ WebChat.factory('server', ['$rootScope', function($rootScope) {
 	// Publish API
 	return {
 		connect: connect,
-		send: send
+		send: send,
+		disconnect: disconnect
 	};
 
 }]);

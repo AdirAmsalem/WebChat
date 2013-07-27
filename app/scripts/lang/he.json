@@ -8,6 +8,7 @@
 		"guest": "אורח",
 		"please_enter_nick": "אנא הזן כינוי (עד 15 תווים)",
 		"login": "התחבר",
+		"logout": "התנתק",
 		"please_enter_message": "אנא הזן את ההודעה שברצונך לשלוח",
 		"send": "שלח",
 		"login_to_view_chat": "יש להתחבר על מנת לצפות בצאט",

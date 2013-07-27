@@ -8,6 +8,7 @@
 		"guest": "Guest",
 		"please_enter_nick": "Please enter a nickname (Maximum 15 characters)",
 		"login": "Login",
+		"logout": "Logout",
 		"please_enter_message": "Please enter your message",
 		"send": "Send",
 		"login_to_view_chat": "Only logged-in users can view the chat",

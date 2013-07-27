@@ -52,6 +52,12 @@ WebChat.controller('AppController', ['$rootScope', '$scope', 'server', 'beeper',
 		messageForm:	'templates/forms/message.html'
 	};
 
+	$scope.logout = function() {
+		$scope.user.nick = '';
+		$scope.user.loggedIn = false;
+		$rootScope.$broadcast('app:logout');
+	};
+
 	$scope.setLanguage = function(methodCode, lang) {
 		var method;
 
