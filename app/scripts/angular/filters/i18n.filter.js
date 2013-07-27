@@ -79,7 +79,7 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 			return langData.keys[key];
 		}
 
-		return '';
+		return key;
 	}
 
 	function getLocalization() {
@@ -114,6 +114,6 @@ angular.module('Localization', []).factory('localization', ['$rootScope', '$http
 		if (key && angular.isString(key)) {
 			return localization.getKey(key);
 		}
-		return '';
+		return key;
 	};
 }]);
