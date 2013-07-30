@@ -1,4 +1,4 @@
-angular.module('Localization', []).factory('localization', ['$rootScope', '$http', '$q', function($rootScope, $http, $q) {
+angular.module('Localization', []).factory('localization', ['$http', '$q', function($http, $q) {
 
 	var LANG_DIRECTORY = 'scripts/lang',
 		langData,
