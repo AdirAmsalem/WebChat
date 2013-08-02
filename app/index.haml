@@ -35,6 +35,9 @@
 				%a(href="" title="{{lang.name}}" ng-repeat="lang in languages" ng-click="setLanguage('name', lang.name)")
 					%i(class="flag {{lang.icon}}")
 
+		%a#fork-me(href="https://github.com/AdirAmsalem/WebChat")
+			%img(src="//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png")
+
 		/ AngularJS
 		%script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js")
 		%script window.angular || document.write('<script src="scripts/dependencies/angular.min.js"><\/script>')

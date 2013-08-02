@@ -3,7 +3,15 @@
 @mixin box-sizing($bs) {
 	-webkit-box-sizing: $bs;
 	-moz-box-sizing: $bs;
+	-o-box-sizing: $bs;
 	box-sizing: $bs;
+}
+
+@mixin transition($val) {
+	-webkit-transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+    transition: $val;
 }
 
 body {
@@ -229,6 +237,24 @@ a {
 		a {
 			text-decoration: none;
 		}
+	}
+}
+
+#fork-me {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-image: url(//s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png);
+	width: 149px;
+	height: 149px;
+
+	img {
+		opacity: 0;
+		@include transition(opacity 300ms ease-out);
+	}
+
+	&:hover img {
+		opacity: 1;
 	}
 }
 
