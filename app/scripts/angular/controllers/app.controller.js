@@ -17,8 +17,11 @@ WebChat.controller('AppController', ['$rootScope', '$scope', 'server', 'beeper',
 	}
 
 	function bindCounter() {
-		window.addEventListener('focus', disableCounter);
-		window.addEventListener('blur', enableCounter);
+		if (!this.bound) {
+			window.addEventListener('focus', disableCounter);
+			window.addEventListener('blur', enableCounter);
+			this.bound = true;
+		}
 	}
 
 	function displayCounter() {
