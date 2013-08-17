@@ -21,41 +21,42 @@ angular.module('Localization', []).factory('localization', ['$http', '$q', funct
 		];
 
 	function getLanguageList() {
-		var list = [];
+		var self = this;
 
 		// Basic memoization
 		if (this.list) {
 			return this.list;
 		}
 
-		for (var i = 0, lang; !!(lang = supportedLanguages[i]); i++) {
-			list.push({
+		this.list = [];
+
+		supportedLanguages.forEach( function(lang) {
+			self.list.push({
 				name: lang.name,
 				icon: lang.icon
 			});
-		}
+		});
 
-		this.list = list;
-
-		return list;
+		return this.list;
 	}
 
 	function getLanguage() {
+		var result = supportedLanguages[0];
+
 		if (language) {
-			for (var i = 0, langObject; !!(langObject = supportedLanguages[i]); i++) {
-				for (var j = 0, lang; !!(lang = langObject.languages[j]); j++) {
-					if (lang === language) {
-						return langObject;
-					}
+			supportedLanguages.some( function(langObject) {
+				if (langObject.languages.indexOf(language) !== -1) {
+					result = langObject;
+					return true;
 				}
-			}
+			});
 		}
 
-		return supportedLanguages[0];
+		return result;
 	}
 
 	function setLanguageByCode(langCode) {
-		if (langCode && angular.isString(langCode)) {
+		if (langCode && typeof langCode === 'string') {
 			language = langCode.toLowerCase();
 		}
 
@@ -63,19 +64,20 @@ angular.module('Localization', []).factory('localization', ['$http', '$q', funct
 	}
 
 	function setLanguageByName(langName) {
-		if (langName && angular.isString(langName)) {
-			for (var i = 0, lang; !!(lang = supportedLanguages[i]); i++) {
+		if (langName && typeof langName === 'string') {
+			supportedLanguages.some( function(lang) {
 				if (lang.name === langName) {
 					language = lang.languages[0];
+					return true;
 				}
-			}
+			});
 		}
 
 		return getLocalization();
 	}
 
 	function getKey(key) {
-		if (langData && langData.keys && langData.keys[key]) {
+		if (langData && langData.keys && langData.keys.hasOwnProperty(key)) {
 			return langData.keys[key];
 		}
 
@@ -111,7 +113,7 @@ angular.module('Localization', []).factory('localization', ['$http', '$q', funct
 }])
 .filter('i18n', ['localization', function(localization) {
 	return function(key) {
-		if (key && angular.isString(key)) {
+		if (key && typeof key === 'string') {
 			return localization.getKey(key);
 		}
 		return key;

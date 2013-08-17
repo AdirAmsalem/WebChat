@@ -22,8 +22,6 @@ WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', '
 			server.send(message);
 			$scope.message = '';
 		}
-
-		return false;
 	};
 
 	updateSpeechTooltip();

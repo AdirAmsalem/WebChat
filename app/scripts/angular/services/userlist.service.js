@@ -8,10 +8,7 @@ WebChat.factory('userlist', function() {
 
 	function buildUserlist(users) {
 		userlist.length = 0;
-
-		for (var i = 0, user; !!(user = users[i]); i++) {
-			addUser(user);
-		}
+		users.forEach(addUser);
 	}
 
 	function addUser(user) {
@@ -19,13 +16,12 @@ WebChat.factory('userlist', function() {
 	}
 
 	function removeUser(userNick) {
-		for (var i = 0, user; !!(user = userlist[i]); i++) {
+		userlist.some( function(user, index) {
 			if (user.nickname === userNick) {
-				return userlist.splice(i, 1);
+				userlist.splice(index, 1);
+				return true;
 			}
-		}
-
-		return false;
+		});
 	}
 
 	// Publish API

@@ -21,8 +21,6 @@ WebChat.controller('LoginFormController', ['$rootScope', '$scope', 'server', 'st
 			server.send(nick);
 			$rootScope.$broadcast('app:login', nick);
 		}
-
-		return false;
 	};
 
 	$rootScope.$on('server:connected', checkPreviousLogin);

@@ -1,7 +1,6 @@
 WebChat.directive('scrollToBottom', ['$rootScope', function($rootScope) {
 	return {
 		restrict: 'A',
-		scope: false,
 		link: function(scope, element) {
 
 			function scrollToBottom(delay) {
