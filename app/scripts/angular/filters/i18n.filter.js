@@ -20,6 +20,8 @@ angular.module('Localization', []).factory('localization', ['$http', '$q', funct
 			}
 		];
 
+	LANG_DIRECTORY += LANG_DIRECTORY[LANG_DIRECTORY.length-1] !== '/' ? '/' : '';
+
 	function getLanguageList() {
 		var self = this;
 
@@ -86,7 +88,6 @@ angular.module('Localization', []).factory('localization', ['$http', '$q', funct
 
 	function getLocalization() {
 		var deferred = $q.defer(),
-			seperator = LANG_DIRECTORY[LANG_DIRECTORY.length-1] !== '/' ? '/' : '',
 			file = getLanguage().file;
 
 		function setLangData(data) {
@@ -94,7 +95,7 @@ angular.module('Localization', []).factory('localization', ['$http', '$q', funct
 			deferred.resolve(data);
 		}
 
-		$http.get(LANG_DIRECTORY + seperator + file, { cache: true })
+		$http.get(LANG_DIRECTORY + file, { cache: true })
 			.success(setLangData)
 			.error(deferred.reject);
 
