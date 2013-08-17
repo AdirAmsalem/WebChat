@@ -7,7 +7,7 @@
 		%meta(name="description" content="WebChat is built with AngularJS - it use HTML5 WebSockets for communication and Node.js as backend")
 		%link(rel="stylesheet" href="styles/main.css")
 
-	%body(ng-class="{'ltr': i18n && i18n.meta && i18n.meta.dir == 'ltr'}")
+	%body(ng-class="{'ltr': i18n.meta.dir == 'ltr'}")
 
 		%header#header
 			%hgroup
