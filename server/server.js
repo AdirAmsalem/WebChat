@@ -36,7 +36,7 @@ var history = [];
 var colors = ['red', 'green', 'blue', 'magenta', 'purple', 'plum', 'orange'];
 
 // Randomize colors order
-colors.sort(function(a,b) { return Math.random() > 0.5; } );
+colors.sort(function(a,b) { return Math.random() > 0.5; });
 
 // Initialize the server
 var server = http.createServer(function(request, response) {
@@ -86,10 +86,10 @@ wsServer.on('request', function(request) {
 
 					clients.push(client);
 
-					wsServer.broadcast( JSON.stringify({ type: 'new_user', data: client }) );
+					wsServer.broadcast(JSON.stringify({ type: 'new_user', data: client }));
 
-					connection.sendUTF( JSON.stringify({ type: 'history', data: history }) );
-					connection.sendUTF( JSON.stringify({ type: 'user_list', data: clients }) );
+					connection.sendUTF(JSON.stringify({ type: 'history', data: history }));
+					connection.sendUTF(JSON.stringify({ type: 'user_list', data: clients }));
 
 					console.log((new Date()) + ' - ' + connection.remoteAddress + ' is identified as ' + client.nickname);
 
@@ -124,7 +124,7 @@ wsServer.on('request', function(request) {
 		clients.splice(getClientIndex(client.nickname), 1);
 		colors.push(client.color);
 
-		wsServer.broadcast( JSON.stringify({ type: 'remove_user', data: client.nickname }) );
+		wsServer.broadcast(JSON.stringify({ type: 'remove_user', data: client.nickname }));
 
 	});
 });
