@@ -1,0 +1,14 @@
+{
+  "name": "WebChat",
+  "homepage": "https://github.com/AdirAmsalem/WebChat",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AdirAmsalem/WebChat"
+  },
+  "dependencies": {
+    "websocket": "~1.0.3"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
