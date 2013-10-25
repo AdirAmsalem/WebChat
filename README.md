@@ -1,4 +1,10 @@
 WebChat
 =======
 
-WebChat is built with AngularJS - it use HTML5 WebSockets for communication and Node.js as backend
+### What is it?
+WebChat is a project I built to demonstrate some new, cutting-edge and useful technologies - including AngularJS, HAML, SASS, HTML5 WebSockets, HTML5 Web Speech API, Node.js, Grunt and counting.
+
+The application itself is basically a chat room, additional features will be added in the future.
+
+### Demo:
+http://chat.adircdn.com
