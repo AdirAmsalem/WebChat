@@ -1,4 +1,4 @@
-WebChat.controller('AppController', ['$rootScope', '$scope', 'server', 'beeper', 'counter', 'localization', 'i18nFilter', function($rootScope, $scope, server, beeper, counter, localization, i18nFilter) {
+WebChat.controller('AppController', ['$scope', 'server', 'beeper', 'counter', 'localization', 'i18nFilter', function($scope, server, beeper, counter, localization, i18nFilter) {
 
 	var langCode = (navigator.language || navigator.userLanguage).toLowerCase();
 
@@ -58,7 +58,7 @@ WebChat.controller('AppController', ['$rootScope', '$scope', 'server', 'beeper',
 	$scope.logout = function() {
 		$scope.user.nick = '';
 		$scope.user.loggedIn = false;
-		$rootScope.$broadcast('app:logout');
+		$scope.$emit('messageAll', { message: 'app:logout' });
 	};
 
 	$scope.setLanguage = function(methodCode, lang) {
@@ -92,19 +92,23 @@ WebChat.controller('AppController', ['$rootScope', '$scope', 'server', 'beeper',
 		}
 	};
 
-	$rootScope.$on('server:connected', serverConnected);
+	$scope.$on('messageAll', function(e, data) {
+		$scope.$broadcast(data.message, data.data);
+	});
 
-	$rootScope.$on('app:login', function(e, nick) {
+	$scope.$on('server:connected', serverConnected);
+
+	$scope.$on('app:login', function(e, nick) {
 		updateUserNick(nick);
 	});
 
-	$rootScope.$on('app:nickError', function(e) {
+	$scope.$on('app:nickError', function(e) {
 		window.alert(i18nFilter('nick_is_already_in_use'));
 	});
 
-	$rootScope.$on('app:loggedIn', loggedIn);
+	$scope.$on('app:loggedIn', loggedIn);
 
-	$rootScope.$on('chat:message', function(e) {
+	$scope.$on('chat:message', function(e) {
 		beeper.beep();
 
 		if (counter.isActive()) {

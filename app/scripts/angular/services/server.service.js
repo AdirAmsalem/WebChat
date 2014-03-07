@@ -37,37 +37,59 @@ WebChat.factory('server', ['$rootScope', function($rootScope) {
 	function onOpen() {
 		console.log('[2/2] Connected to the server.');
 
-		$rootScope.$broadcast('server:connected');
+		$rootScope.$broadcast('messageAll', { message: 'server:connected' });
 		$rootScope.$apply();
 	}
 
 	function onMessage(response) {
-		var data;
+		var data, messages = [];
 
 		response = JSON.parse(response.data);
 		data = response.data;
 
 		switch (response.type) {
 			case 'message':
-				$rootScope.$broadcast('chat:message', data);
+				messages.push({
+					message: 'chat:message',
+					data: data
+				});
 				break;
 			case 'history':
-				$rootScope.$broadcast('app:loggedIn', data);
-				$rootScope.$broadcast('chat:history', data);
+				messages.push({
+					message: 'app:loggedIn',
+					data: data
+				});
+				messages.push({
+					message: 'chat:history',
+					data: data
+				});
 				break;
 			case 'nick_error':
-				$rootScope.$broadcast('app:nickError');
+				messages.push({ message: 'app:nickError' });
 				break;
 			case 'new_user':
-				$rootScope.$broadcast('userlist:add', data);
+				messages.push({
+					message: 'userlist:add',
+					data: data
+				});
 				break;
 			case 'user_list':
-				$rootScope.$broadcast('userlist:current', data);
+				messages.push({
+					message: 'userlist:current',
+					data: data
+				});
 				break;
 			case 'remove_user':
-				$rootScope.$broadcast('userlist:remove', data);
+				messages.push({
+					message: 'userlist:remove',
+					data: data
+				});
 				break;
 		}
+
+		messages.forEach( function(message) {
+			$rootScope.$broadcast('messageAll', message);
+		});
 
 		$rootScope.$apply();
 	}

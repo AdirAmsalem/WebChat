@@ -22,7 +22,7 @@ WebChat.factory('speechRecognition', ['$rootScope', function($rootScope) {
 
 	function onStart() {
 		active = true;
-		$rootScope.$broadcast('speech:stateChange');
+		$rootScope.$broadcast('messageAll', { message: 'speech:stateChange' });
 		$rootScope.$apply();
 	}
 
@@ -32,7 +32,7 @@ WebChat.factory('speechRecognition', ['$rootScope', function($rootScope) {
 		for (var i = event.resultIndex, result; !!(result = event.results[i]); i++) {
 			if (result.isFinal) {
 				final = result[0].transcript;
-				$rootScope.$broadcast('speech:message', final);
+				$rootScope.$broadcast('messageAll', { message: 'speech:message', data: final });
 				$rootScope.$apply();
 			}
 		}
@@ -40,13 +40,13 @@ WebChat.factory('speechRecognition', ['$rootScope', function($rootScope) {
 
 	function onError() {
 		active = false;
-		$rootScope.$broadcast('speech:stateChange');
+		$rootScope.$broadcast('messageAll', { message: 'speech:stateChange' });
 		$rootScope.$apply();
 	}
 
 	function onEnd() {
 		active = false;
-		$rootScope.$broadcast('speech:stateChange');
+		$rootScope.$broadcast('messageAll', { message: 'speech:stateChange' });
 		$rootScope.$apply();
 	}
 

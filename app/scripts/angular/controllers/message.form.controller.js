@@ -1,4 +1,4 @@
-WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', 'localization', 'speechRecognition', function($rootScope, $scope, server, localization, speechRecognition) {
+WebChat.controller('MessageFormController', ['$scope', 'server', 'localization', 'speechRecognition', function($scope, server, localization, speechRecognition) {
 
 	$scope.message = '';
 	$scope.speech = speechRecognition;
@@ -26,9 +26,9 @@ WebChat.controller('MessageFormController', ['$rootScope', '$scope', 'server', '
 
 	updateSpeechTooltip();
 
-	$rootScope.$on('speech:stateChange', updateSpeechTooltip);
+	$scope.$on('speech:stateChange', updateSpeechTooltip);
 
-	$rootScope.$on('speech:message', function(e, data) {
+	$scope.$on('speech:message', function(e, data) {
 		$scope.message += data;
 	});
 

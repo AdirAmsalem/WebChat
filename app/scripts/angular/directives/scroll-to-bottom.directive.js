@@ -1,7 +1,7 @@
-WebChat.directive('scrollToBottom', ['$rootScope', function($rootScope) {
+WebChat.directive('scrollToBottom', [ function() {
 	return {
 		restrict: 'A',
-		link: function(scope, element) {
+		link: function($scope, element) {
 
 			function scrollToBottom(delay) {
 				setTimeout( function() {
@@ -9,7 +9,7 @@ WebChat.directive('scrollToBottom', ['$rootScope', function($rootScope) {
 				}, delay || 0);
 			}
 
-			$rootScope.$on('events:scrollToBottom', function(e, delay) {
+			$scope.$on('events:scrollToBottom', function(e, delay) {
 				scrollToBottom(delay);
 			});
 		}

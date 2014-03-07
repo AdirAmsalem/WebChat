@@ -1,22 +1,22 @@
-WebChat.controller('ChatController', ['$rootScope', '$scope', 'chat', function($rootScope, $scope, chat) {
+WebChat.controller('ChatController', ['$scope', 'chat', function($scope, chat) {
 
 	$scope.messages = chat.getMessages();
 
 	function buildChat(messages) {
 		chat.buildChat(messages);
-		$rootScope.$broadcast('events:scrollToBottom', 1000);
+		$scope.$emit('messageAll', { message: 'events:scrollToBottom', data: 1000 });
 	}
 
 	function addMessage(message) {
 		chat.addMessage(message);
-		$rootScope.$broadcast('events:scrollToBottom');
+		$scope.$emit('messageAll', { message: 'events:scrollToBottom' });
 	}
 
-	$rootScope.$on('chat:history', function(e, messages) {
+	$scope.$on('chat:history', function(e, messages) {
 		buildChat(messages);
 	});
 
-	$rootScope.$on('chat:message', function(e, message) {
+	$scope.$on('chat:message', function(e, message) {
 		addMessage(message);
 	});
 

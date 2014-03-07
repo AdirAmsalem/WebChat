@@ -1,4 +1,4 @@
-WebChat.controller('LoginFormController', ['$rootScope', '$scope', 'server', 'storage', function($rootScope, $scope, server, storage) {
+WebChat.controller('LoginFormController', ['$scope', 'server', 'storage', function($scope, server, storage) {
 
 	$scope.nick = '';
 
@@ -19,11 +19,11 @@ WebChat.controller('LoginFormController', ['$rootScope', '$scope', 'server', 'st
 		if (nick.length >= 1 && nick.length <= 15) {
 			storage.set('nick', nick);
 			server.send(nick);
-			$rootScope.$broadcast('app:login', nick);
+			$scope.$emit('messageAll', { message: 'app:login', data: nick });
 		}
 	};
 
-	$rootScope.$on('server:connected', checkPreviousLogin);
-	$rootScope.$on('app:logout', logout);
+	$scope.$on('server:connected', checkPreviousLogin);
+	$scope.$on('app:logout', logout);
 
 }]);
