@@ -182,10 +182,12 @@ a {
 
 .chat_form {
 	margin-top: 5px;
+	overflow: hidden;
 
 	.input-container {
 		width: 572px;
 		display: inline-block;
+		float: right;
 		position: relative;
 	}
 
@@ -216,6 +218,7 @@ a {
 		border: 1px solid #bbbbbb;
 		background-color: #eeeeee;
 		cursor: pointer;
+		float: left;
 		@include box-sizing(border-box);
 	}
 
@@ -279,6 +282,14 @@ body.ltr {
 	.push-to-talk {
 		left: auto;
 		right: 8px;
+	}
+
+	.input-container {
+		float: left;
+	}
+
+	input[type="submit"] {
+		float: right;
 	}
 }
 
